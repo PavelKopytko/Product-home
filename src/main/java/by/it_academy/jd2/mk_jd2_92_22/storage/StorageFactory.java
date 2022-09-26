@@ -9,6 +9,6 @@ public class StorageFactory implements IStorageFactory {
     private IStorageFactory productStorage;
 
     public StorageFactory(){
-        this.productStorage = new ProductStorage();
+        //this.productStorage = new ProductStorage();
     }
 }
