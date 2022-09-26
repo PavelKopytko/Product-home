@@ -1,8 +1,6 @@
 package by.it_academy.jd2.mk_jd2_92_22.storage;
 
-import by.it_academy.jd2.mk_jd2_92_22.storage.api.IStorageFactory;
-
-public class StorageFactory implements IStorageFactory {
+public class StorageFactory {
 
     private static final IStorageFactory instance = new StorageFactory();
 
@@ -10,5 +8,6 @@ public class StorageFactory implements IStorageFactory {
 
     public StorageFactory(){
         //this.productStorage = new ProductStorage();
+        //asdasdas
     }
 }
