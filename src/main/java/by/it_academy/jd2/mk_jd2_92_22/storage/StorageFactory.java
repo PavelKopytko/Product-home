@@ -8,6 +8,6 @@ public class StorageFactory {
 
     public StorageFactory(){
         //this.productStorage = new ProductStorage();
-        //asdasdas
+        //asdasdasdfad
     }
 }
