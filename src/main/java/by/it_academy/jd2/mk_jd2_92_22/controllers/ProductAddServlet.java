@@ -37,6 +37,7 @@ public class ProductAddServlet extends HttpServlet {
         String price = req.getParameter("price");
         String discount = req.getParameter("discount");
         String description = req.getParameter("description");
+        
 
         PrintWriter writer = resp.getWriter();
 
