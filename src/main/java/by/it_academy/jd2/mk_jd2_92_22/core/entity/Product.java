@@ -5,10 +5,10 @@ import java.util.Objects;
 public class Product {
 
     private int id;
-    private final String name;
-    private final int price;
-    private final int discount;
-    private final String description;
+    private String name;
+    private int price;
+    private int discount;
+    private String description;
 
     public Product(String name, int price, int discount, String description) {
         //this.id = id++;

@@ -15,15 +15,15 @@ import java.util.List;
 @WebServlet(name = "ProductServlet", urlPatterns = "/")
 public class ProductServlet extends HttpServlet {
 
-    private IProductService productService = ProductService.getInstance();
+    //private IProductService productService = ProductService.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html; charset=UTF-8");
+        /*resp.setContentType("text/html; charset=UTF-8");
 
         List<Product> products = productService.get();
 
         req.setAttribute("products", products);
-        req.getRequestDispatcher("main2.jsp").forward(req, resp);
+        req.getRequestDispatcher("main2.jsp").forward(req, resp);*/
     }
 }

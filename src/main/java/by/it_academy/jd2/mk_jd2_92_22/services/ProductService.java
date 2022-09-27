@@ -1,20 +1,24 @@
 package by.it_academy.jd2.mk_jd2_92_22.services;
 
+import by.it_academy.jd2.mk_jd2_92_22.core.ProductCreateDTO;
 import by.it_academy.jd2.mk_jd2_92_22.core.entity.Product;
+import by.it_academy.jd2.mk_jd2_92_22.core.entity.ProductBuilder;
 import by.it_academy.jd2.mk_jd2_92_22.services.api.IProductService;
 import by.it_academy.jd2.mk_jd2_92_22.storage.ProductStorage;
 import by.it_academy.jd2.mk_jd2_92_22.storage.api.IProductStorage;
+import by.it_academy.jd2.mk_jd2_92_22.storage.api.StorageFactory;
 
 import java.util.List;
 
 public class ProductService implements IProductService {
 
-    private static final ProductService instance = new ProductService();
+    //private static final ProductService instance = new ProductService();
 
-    private final IProductStorage storage;
+    private IProductStorage storage;
 
-    private ProductService() {
-        this.storage = ProductStorage.getInstance();
+    public ProductService() {
+        this.storage = StorageFactory.getInstance().getProductStorage();
+        //this.storage = ProductStorage.getInstance();
     }
 
     @Override
@@ -28,9 +32,19 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public void add(Product product) {
-        this.validate(product);
-        this.storage.add(product);
+    public void save(ProductCreateDTO p) {
+        Product product= ProductBuilder
+                .create()
+                .setName(p.getName())
+                .setPrice(p.getPrice())
+                .setDiscount(p.getDiscount())
+                .setDescription(p.getDescription())
+                .build();
+
+        this.storage.save(product);
+
+        //this.validate(p);
+        //this.storage.add(product);
 
     }
 
@@ -41,7 +55,7 @@ public class ProductService implements IProductService {
         }
         //Product product = this.storage.get(item.getId());
         //if (product != null) {
-            //throw new IllegalArgumentException("Id уже используется");
+        //throw new IllegalArgumentException("Id уже используется");
         //}
         if (item.getName() == null || item.getName().isBlank()) {
             throw new IllegalArgumentException("Вы не заполнили название продукта");
@@ -55,7 +69,7 @@ public class ProductService implements IProductService {
         }
     }
 
-    public static ProductService getInstance() {
-        return instance;
-    }
+    //public static ProductService getInstance() {
+        //return instance;
+    //}
 }

@@ -8,6 +8,6 @@ public interface IEssenceStorage<TYPE> {
 
     TYPE get(int id);
 
-    void add(TYPE type);
+    void save(TYPE type);
 
 }

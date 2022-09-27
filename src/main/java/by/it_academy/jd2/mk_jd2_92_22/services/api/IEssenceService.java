@@ -8,7 +8,7 @@ public interface IEssenceService<TYPE> {
 
     TYPE get(int id);
 
-    void add(TYPE type);
+
 
     void validate(TYPE item);
 }

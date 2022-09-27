@@ -17,7 +17,7 @@ import java.util.List;
 @WebServlet(name = "ProductAddServlet", urlPatterns = "/add")
 public class ProductAddServlet extends HttpServlet {
 
-    private IProductService productService = ProductService.getInstance();
+   // private IProductService productService = ProductService.getInstance();
 
 
     @Override
@@ -63,7 +63,7 @@ public class ProductAddServlet extends HttpServlet {
             productBuilder.setDescription(req.getParameter("description"));
         }
 
-        productService.add(productBuilder.build());
+        /*productService.add(productBuilder.build());*/
 
         resp.sendRedirect(req.getContextPath() + "/");
 

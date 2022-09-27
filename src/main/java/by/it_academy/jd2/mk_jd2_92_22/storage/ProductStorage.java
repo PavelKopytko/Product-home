@@ -9,13 +9,13 @@ import java.util.List;
 
 public class ProductStorage implements IProductStorage {
 
-    private static ProductStorage instance = new ProductStorage();
+    //private static ProductStorage instance = new ProductStorage();
 
-    private List<Product> data = new ArrayList<>();
-    private int id=0;
+    public List<Product> data = new ArrayList<>();
+    private int id = 0;
 
-    private ProductStorage() {
-        this.data.add(ProductBuilder.create()
+    public ProductStorage() {
+        /*this.data.add(ProductBuilder.create()
                 .setId(1)
                 .setName("Monitor")
                 .setPrice(50)
@@ -43,7 +43,7 @@ public class ProductStorage implements IProductStorage {
                 .setPrice(1000)
                 .setDiscount(50)
                 .setDescription("grey")
-                .build());
+                .build());*/
 
     }
 
@@ -58,12 +58,13 @@ public class ProductStorage implements IProductStorage {
     }
 
     @Override
-    public void add(Product product) {
+    public void save(Product product) {
         product.setId(++id);
+        //product.setId(this.data.size());
         this.data.add(product);
     }
 
-    public static ProductStorage getInstance() {
-        return instance;
-    }
+    //public static ProductStorage getInstance() {
+    //    return instance;
+    //}
 }
