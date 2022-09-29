@@ -12,8 +12,6 @@ import java.util.List;
 
 public class ProductService implements IProductService {
 
-    //private static final ProductService instance = new ProductService();
-
     private IProductStorage storage;
 
     public ProductService() {
@@ -69,7 +67,4 @@ public class ProductService implements IProductService {
         }
     }
 
-    //public static ProductService getInstance() {
-        //return instance;
-    //}
 }

@@ -1,9 +1,11 @@
 package by.it_academy.jd2.mk_jd2_92_22.controllers;
 
+import by.it_academy.jd2.mk_jd2_92_22.core.ProductCreateDTO;
 import by.it_academy.jd2.mk_jd2_92_22.core.entity.Product;
 import by.it_academy.jd2.mk_jd2_92_22.core.entity.ProductBuilder;
 import by.it_academy.jd2.mk_jd2_92_22.services.ProductService;
 import by.it_academy.jd2.mk_jd2_92_22.services.api.IProductService;
+import by.it_academy.jd2.mk_jd2_92_22.services.api.ServiceFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +19,13 @@ import java.util.List;
 @WebServlet(name = "ProductAddServlet", urlPatterns = "/add")
 public class ProductAddServlet extends HttpServlet {
 
-   // private IProductService productService = ProductService.getInstance();
+    private IProductService service;
+
+    public ProductAddServlet() {
+        this.service = ServiceFactory.getInstance().getProductService();
+    }
+
+    // private IProductService productService = ProductService.getInstance();
 
 
     @Override
@@ -37,34 +45,43 @@ public class ProductAddServlet extends HttpServlet {
         String price = req.getParameter("price");
         String discount = req.getParameter("discount");
         String description = req.getParameter("description");
-        
+
 
         PrintWriter writer = resp.getWriter();
 
-        ProductBuilder productBuilder = ProductBuilder.create();
+        //ProductBuilder productBuilder = ProductBuilder.create();
+        ProductCreateDTO createDTO = new ProductCreateDTO();
 
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("Поле имя не заполнено");
         }
-        productBuilder.setName(req.getParameter("name"));
+        //productBuilder.setName(req.getParameter("name"));
+        createDTO.setName(name);
 
         if (price.matches("[\\d]+")) {
-            productBuilder.setPrice(Integer.parseInt(price));
+            //productBuilder.setPrice(Integer.parseInt(price));
+
+            createDTO.setPrice(Integer.parseInt(price));
         } else {
             throw new IllegalArgumentException("В поле цена введены некорректные данные");
         }
 
         if (discount.matches("[\\d]+")) {
-            productBuilder.setDiscount(Integer.parseInt(discount));
+            //productBuilder.setDiscount(Integer.parseInt(discount));
+            createDTO.setDiscount(Integer.parseInt(discount));
         } else {
             throw new IllegalArgumentException("В поле скидка введены некорректные данные");
         }
 
         if (description != null || !description.isBlank()) {
-            productBuilder.setDescription(req.getParameter("description"));
+            //productBuilder.setDescription(req.getParameter("description"));
+            createDTO.setDescription(description);
+
         }
 
-        /*productService.add(productBuilder.build());*/
+        //productBuilder.build();
+
+        service.save(createDTO);
 
         resp.sendRedirect(req.getContextPath() + "/");
 

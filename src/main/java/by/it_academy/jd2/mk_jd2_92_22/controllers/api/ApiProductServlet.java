@@ -33,7 +33,7 @@ public class ApiProductServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html; charset=UTF-8");
 
-        List<Product> products= service.get();
+        List<Product> products = service.get();
 
         req.setAttribute("products", products);
 
@@ -54,7 +54,6 @@ public class ApiProductServlet extends HttpServlet {
         this.service.save(createDTO);
 
         resp.setStatus(201);
-
 
 
     }
