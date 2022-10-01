@@ -1,20 +1,19 @@
 package by.it_academy.jd2.mk_jd2_92_22.storage;
 
 import by.it_academy.jd2.mk_jd2_92_22.core.entity.Product;
-import by.it_academy.jd2.mk_jd2_92_22.core.entity.ProductBuilder;
 import by.it_academy.jd2.mk_jd2_92_22.storage.api.IProductStorage;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductStorage implements IProductStorage {
+public class MemoryProductStorage implements IProductStorage {
 
     //private static ProductStorage instance = new ProductStorage();
 
     public List<Product> data = new ArrayList<>();
     private int id = 0;
 
-    public ProductStorage() {
+    public MemoryProductStorage() {
         /*this.data.add(ProductBuilder.create()
                 .setId(1)
                 .setName("Monitor")

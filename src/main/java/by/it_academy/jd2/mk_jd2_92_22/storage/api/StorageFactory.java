@@ -1,6 +1,6 @@
 package by.it_academy.jd2.mk_jd2_92_22.storage.api;
 
-import by.it_academy.jd2.mk_jd2_92_22.storage.ProductStorage;
+import by.it_academy.jd2.mk_jd2_92_22.storage.MemoryProductStorage;
 
 public class StorageFactory implements IStorageFactory {
 
@@ -9,7 +9,7 @@ public class StorageFactory implements IStorageFactory {
     private IProductStorage productStorage;
 
     private StorageFactory() {
-        this.productStorage = new ProductStorage();
+        this.productStorage = new MemoryProductStorage();
     }
 
     @Override

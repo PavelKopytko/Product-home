@@ -10,6 +10,9 @@ public class Product {
     private int discount;
     private String description;
 
+    public Product() {
+    }
+
     public Product(String name, int price, int discount, String description) {
         //this.id = id++;
         this.name = name;

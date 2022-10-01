@@ -39,23 +39,25 @@ public class ApiProductServletJSON extends HttpServlet {
 
         BufferedReader reader = new BufferedReader(req.getReader());
 
-        String jsonString;
+       // String json;
 
         StringBuilder stringBuilder = new StringBuilder();
-
+/*
         int c;
 
         while ((c = reader.read()) != -1) {
             stringBuilder.append((char) c);
-            //jsonString += (char) c;
+            //json += (char) c;
         }
-        jsonString = stringBuilder.toString();
+        json = stringBuilder.toString();*/
 
-        /*  Don't work. WHY?
-        while (reader.readLine() != null) {
-            json += reader.readLine();
+          //Don't work. WHY?
+        String json="";
+        String line;
+        while ((line=reader.readLine()) != null) {
+            json += line;
         }
-        */
+
 
         //String jsonString = req.getReader().lines().collect(Collectors.joining());
 
@@ -64,14 +66,14 @@ public class ApiProductServletJSON extends HttpServlet {
 
         ProductCreateDTO createDTO;
         try {
-            createDTO = gson.fromJson(jsonString, ProductCreateDTO.class);
+            createDTO = gson.fromJson(json, ProductCreateDTO.class);
         } catch (JsonSyntaxException e) {
             throw new IllegalArgumentException("Переданы некорректные параметры");
         }
 
 
         PrintWriter writer = resp.getWriter();
-        writer.write(jsonString);
+        writer.write(json);
 
         /// proverka
 
